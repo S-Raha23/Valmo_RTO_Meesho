@@ -1,0 +1,105 @@
+{
+  "_comment": "Times are relative to server start. 'telemetry' is what the simulated rider phone reports (distance from drop pin, outgoing call length). 'history' steps are replayed through the real engine, so seeded cases have genuine states and timelines.",
+
+  "hubs": [
+    { "hub_id": "H-JPR", "hub_name": "Jaipur South Hub", "city": "Jaipur", "capacity": 400 },
+    { "hub_id": "H-LKO", "hub_name": "Lucknow Central Hub", "city": "Lucknow", "capacity": 300 }
+  ],
+
+  "riders": [
+    { "rider_id": "R-01", "name": "Ravi Kumar", "hub_id": "H-JPR" },
+    { "rider_id": "R-02", "name": "Mohd. Salim", "hub_id": "H-LKO" }
+  ],
+
+  "customers": [
+    { "customer_id": "C-101", "name": "Priya Sharma",   "phone": "+91 98290 41127", "refusals_days_ago": [] },
+    { "customer_id": "C-102", "name": "Rahul Verma",    "phone": "+91 94140 22871", "refusals_days_ago": [45, 210] },
+    { "customer_id": "C-103", "name": "Anita Devi",     "phone": "+91 99280 63310", "refusals_days_ago": [150] },
+    { "customer_id": "C-104", "name": "Arjun Singh",    "phone": "+91 97830 11564", "refusals_days_ago": [] },
+    { "customer_id": "C-105", "name": "Kavya Reddy",    "phone": "+91 95710 88423", "refusals_days_ago": [] },
+    { "customer_id": "C-106", "name": "Suresh Yadav",   "phone": "+91 98870 30219", "refusals_days_ago": [30], "offer_used_days_ago": 30 },
+    { "customer_id": "C-107", "name": "Imran Khan",     "phone": "+91 94150 77302", "refusals_days_ago": [] },
+    { "customer_id": "C-108", "name": "Pooja Mishra",   "phone": "+91 99350 12876", "refusals_days_ago": [] },
+    { "customer_id": "C-109", "name": "Deepak Chauhan", "phone": "+91 98280 55190", "refusals_days_ago": [] },
+    { "customer_id": "C-110", "name": "Sunita Rawat",   "phone": "+91 94500 31744", "refusals_days_ago": [] },
+    { "customer_id": "C-111", "name": "Meena Gupta",    "phone": "+91 97720 90618", "refusals_days_ago": [60, 250] },
+    { "customer_id": "C-112", "name": "Vikram Joshi",   "phone": "+91 95550 20437", "refusals_days_ago": [] },
+    { "customer_id": "C-113", "name": "Neha Tiwari",    "phone": "+91 93360 48125", "refusals_days_ago": [] },
+    { "customer_id": "C-114", "name": "Karan Mehta",    "phone": "+91 98291 67403", "refusals_days_ago": [] },
+    { "customer_id": "C-115", "name": "Farah Ali",      "phone": "+91 94152 38841", "refusals_days_ago": [] },
+    { "customer_id": "C-116", "name": "Rohit Saini",    "phone": "+91 96490 70215", "refusals_days_ago": [200] },
+    { "customer_id": "C-117", "name": "Sneha Kapoor",   "phone": "+91 98281 55632", "refusals_days_ago": [] },
+    { "customer_id": "C-118", "name": "Manoj Bansal",   "phone": "+91 94143 90871", "refusals_days_ago": [] },
+    { "customer_id": "C-119", "name": "Ritu Agarwal",   "phone": "+91 99500 27348", "refusals_days_ago": [] }
+  ],
+
+  "orders": [
+    { "order_id": "ORD-1001", "customer_id": "C-101", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Cotton Kurti Set (Pack of 2)", "order_value": 349, "payment_mode": "COD", "address": "Plot 14, Shanti Nagar, Durgapura, Jaipur 302018", "drop_pin": { "lat": 26.8531, "lng": 75.7952 }, "telemetry": { "distance_m": 18, "call_sec": 26 } },
+    { "order_id": "ORD-1002", "customer_id": "C-104", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Wireless Bluetooth Earbuds", "order_value": 499, "payment_mode": "COD", "address": "22, Gopalpura Bypass, Jaipur 302015", "drop_pin": { "lat": 26.8702, "lng": 75.7795 }, "telemetry": { "distance_m": 34, "call_sec": 32 } },
+    { "order_id": "ORD-1003", "customer_id": "C-102", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Men's Running Shoes", "order_value": 599, "payment_mode": "COD", "address": "B-7, Sanganer Housing Board, Jaipur 302029", "drop_pin": { "lat": 26.8210, "lng": 75.7910 }, "telemetry": { "distance_m": 12, "call_sec": 41 } },
+    { "order_id": "ORD-1004", "customer_id": "C-105", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Printed Georgette Saree", "order_value": 449, "payment_mode": "COD", "address": "41, Pratap Nagar Sector 8, Jaipur 302033", "drop_pin": { "lat": 26.8005, "lng": 75.8187 }, "telemetry": [{ "distance_m": 640, "call_sec": 0 }, { "distance_m": 15, "call_sec": 34 }] },
+    { "order_id": "ORD-1005", "customer_id": "C-103", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Kitchen Storage Container Set", "order_value": 199, "payment_mode": "COD", "address": "House 3, Malviya Nagar, Jaipur 302017", "drop_pin": { "lat": 26.8549, "lng": 75.8243 }, "telemetry": { "distance_m": 25, "call_sec": 29 } },
+    { "order_id": "ORD-1006", "customer_id": "C-106", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Smart Fitness Band", "order_value": 899, "payment_mode": "COD", "address": "C-19, Mansarovar, Jaipur 302020", "drop_pin": { "lat": 26.8698, "lng": 75.7568 }, "telemetry": { "distance_m": 40, "call_sec": 23 } },
+    { "order_id": "ORD-1007", "customer_id": "C-117", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Cotton Dupatta", "order_value": 229, "payment_mode": "COD", "address": "16, Tonk Road, Jaipur 302015", "drop_pin": { "lat": 26.8601, "lng": 75.8032 }, "telemetry": { "distance_m": 20, "call_sec": 0 } },
+    { "order_id": "ORD-1008", "customer_id": "C-118", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Steel Lunch Box", "order_value": 319, "payment_mode": "COD", "address": "9, Jagatpura Main Road, Jaipur 302017", "drop_pin": { "lat": 26.8235, "lng": 75.8640 }, "telemetry": { "distance_m": 1800, "call_sec": 28 } },
+    { "order_id": "ORD-1009", "customer_id": "C-119", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Baby Cotton Romper Set", "order_value": 379, "payment_mode": "COD", "address": "52, Bani Park, Jaipur 302016", "drop_pin": { "lat": 26.9280, "lng": 75.7930 }, "telemetry": { "distance_m": 30, "call_sec": 5 } },
+
+    { "order_id": "ORD-0901", "customer_id": "C-107", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Cotton Double Bedsheet", "order_value": 399, "payment_mode": "COD", "address": "12, Jhotwara Road, Jaipur 302012", "drop_pin": { "lat": 26.9435, "lng": 75.7564 }, "telemetry": { "distance_m": 35, "call_sec": 28 } },
+    { "order_id": "ORD-0902", "customer_id": "C-108", "rider_id": "R-02", "hub_id": "H-LKO", "product_name": "Kids' Denim Jacket", "order_value": 459, "payment_mode": "COD", "address": "B-22, Sector 11, Aliganj, Lucknow 226024", "drop_pin": { "lat": 26.8930, "lng": 80.9460 }, "telemetry": { "distance_m": 22, "call_sec": 31 } },
+    { "order_id": "ORD-0903", "customer_id": "C-109", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Stainless Steel Water Bottle", "order_value": 249, "payment_mode": "COD", "address": "88, Vaishali Nagar, Jaipur 302021", "drop_pin": { "lat": 26.9110, "lng": 75.7433 }, "telemetry": { "distance_m": 18, "call_sec": 26 } },
+    { "order_id": "ORD-0904", "customer_id": "C-110", "rider_id": "R-02", "hub_id": "H-LKO", "product_name": "Women's Handbag", "order_value": 529, "payment_mode": "COD", "address": "17, Gomti Nagar Vistar, Lucknow 226010", "drop_pin": { "lat": 26.8560, "lng": 81.0200 }, "telemetry": { "distance_m": 40, "call_sec": 35 } },
+    { "order_id": "ORD-0905", "customer_id": "C-111", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Ceramic Dinner Set", "order_value": 649, "payment_mode": "COD", "address": "5, Raja Park, Jaipur 302004", "drop_pin": { "lat": 26.8990, "lng": 75.8290 }, "telemetry": { "distance_m": 25, "call_sec": 22 } },
+    { "order_id": "ORD-0906", "customer_id": "C-112", "rider_id": "R-02", "hub_id": "H-LKO", "product_name": "Cotton Salwar Suit", "order_value": 379, "payment_mode": "COD", "address": "31, Indira Nagar, Lucknow 226016", "drop_pin": { "lat": 26.8780, "lng": 80.9980 }, "telemetry": { "distance_m": 30, "call_sec": 24 } },
+    { "order_id": "ORD-0907", "customer_id": "C-113", "rider_id": "R-02", "hub_id": "H-LKO", "product_name": "LED Desk Lamp", "order_value": 299, "payment_mode": "COD", "address": "9, Hazratganj, Lucknow 226001", "drop_pin": { "lat": 26.8500, "lng": 80.9460 }, "telemetry": { "distance_m": 820, "call_sec": 0 } },
+    { "order_id": "ORD-0908", "customer_id": "C-114", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Phone Back Cover", "order_value": 149, "payment_mode": "COD", "address": "63, Sodala, Jaipur 302006", "drop_pin": { "lat": 26.9050, "lng": 75.7800 }, "telemetry": { "distance_m": 40, "call_sec": 45 } },
+    { "order_id": "ORD-0909", "customer_id": "C-115", "rider_id": "R-02", "hub_id": "H-LKO", "product_name": "Pressure Cooker 3L", "order_value": 699, "payment_mode": "COD", "address": "14, Mahanagar, Lucknow 226006", "drop_pin": { "lat": 26.8840, "lng": 80.9600 }, "telemetry": { "distance_m": 15, "call_sec": 29 } },
+    { "order_id": "ORD-0910", "customer_id": "C-116", "rider_id": "R-01", "hub_id": "H-JPR", "product_name": "Men's Formal Shirt", "order_value": 429, "payment_mode": "COD", "address": "27, C-Scheme, Jaipur 302001", "drop_pin": { "lat": 26.9080, "lng": 75.8000 }, "telemetry": { "distance_m": 20, "call_sec": 33 } }
+  ],
+
+  "history": [
+    { "order_id": "ORD-0901", "note": "undelivered -> confirmed -> rescheduled", "steps": [
+      { "hours_ago": 20, "action": "attempt", "reason": "not_available" },
+      { "hours_ago": 19.8, "action": "confirm" },
+      { "hours_ago": 19.7, "action": "choose_slot", "slot": 1 }
+    ]},
+    { "order_id": "ORD-0902", "note": "undelivered -> awaiting response", "steps": [
+      { "hours_ago": 3, "action": "attempt", "reason": "not_available" }
+    ]},
+    { "order_id": "ORD-0903", "note": "refused -> eligible -> offer sent", "steps": [
+      { "hours_ago": 6, "action": "attempt", "reason": "refused" },
+      { "hours_ago": 5.9, "action": "confirm" }
+    ]},
+    { "order_id": "ORD-0904", "note": "refused -> offer accepted -> delivered", "steps": [
+      { "hours_ago": 60, "action": "attempt", "reason": "refused" },
+      { "hours_ago": 59.8, "action": "confirm" },
+      { "hours_ago": 59.5, "action": "pay" },
+      { "hours_ago": 59.4, "action": "choose_slot", "slot": 0 },
+      { "hours_ago": 44, "action": "deliver" }
+    ]},
+    { "order_id": "ORD-0905", "note": "refused -> 2 prior refusals -> no offer, COD paused, returned", "steps": [
+      { "hours_ago": 30, "action": "attempt", "reason": "refused" },
+      { "hours_ago": 29.7, "action": "confirm" }
+    ]},
+    { "order_id": "ORD-0906", "note": "refused -> customer says mistake -> escalated", "steps": [
+      { "hours_ago": 10, "action": "attempt", "reason": "refused" },
+      { "hours_ago": 9.8, "action": "deny" }
+    ]},
+    { "order_id": "ORD-0907", "note": "fake attempt -> flagged", "steps": [
+      { "hours_ago": 2, "action": "attempt", "reason": "not_available" }
+    ]},
+    { "order_id": "ORD-0908", "note": "undelivered -> no response -> hold lapses -> returned", "steps": [
+      { "hours_ago": 80, "action": "attempt", "reason": "not_available" }
+    ]},
+    { "order_id": "ORD-0909", "note": "undelivered -> rescheduled -> delivered", "steps": [
+      { "hours_ago": 50, "action": "attempt", "reason": "not_available" },
+      { "hours_ago": 49.8, "action": "confirm" },
+      { "hours_ago": 49.7, "action": "choose_slot", "slot": 0 },
+      { "hours_ago": 30, "action": "deliver" }
+    ]},
+    { "order_id": "ORD-0910", "note": "refused -> eligible -> declined offer -> returned", "steps": [
+      { "hours_ago": 26, "action": "attempt", "reason": "refused" },
+      { "hours_ago": 25.8, "action": "confirm" },
+      { "hours_ago": 25.5, "action": "decline_offer" }
+    ]}
+  ]
+}

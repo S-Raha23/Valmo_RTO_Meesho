@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RTO Recovery · Prototype</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/driver">
+      <span class="logo">↺</span>
+      <span>RTO Recovery <span class="muted">· Valmo prototype</span></span>
+    </a>
+    <nav id="nav">
+      <a href="#/driver">🛵 Driver</a>
+      <a href="#/customer">📱 Customer</a>
+      <a href="#/hub">🏢 Hub Manager</a>
+    </nav>
+    <button id="reset-btn" class="btn ghost small" title="Restore all seed data">Reset demo</button>
+  </header>
+  <div id="nextbar"></div>
+
+  <main id="view"><p class="muted center-text">Loading…</p></main>
+  <div id="toast" role="status"></div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Optional: link this repo to Netlify for automatic deploys on every push.
+[build]
+  command = "npm run build:static"
+  publish = "dist"

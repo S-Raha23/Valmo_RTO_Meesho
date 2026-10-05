@@ -1,7 +1,7 @@
 const { FlowError } = require('../lib/errors');
 const { iso } = require('../lib/format');
 
-// Ops-panel edits so a presenter can change a customer's history live during the demo.
+// Ops-panel edits to a customer's refusal history, used to exercise the offer and COD guardrails.
 
 function findCustomer(db, id) {
   const customer = db.customers.find((c) => c.customer_id === id);

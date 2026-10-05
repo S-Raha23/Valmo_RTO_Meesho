@@ -105,7 +105,7 @@ function parcelsTable() {
     </tbody>`;
 }
 
-// 5 columns: Customer · Refusals (90 d / 12 mo) · COD · Offer eligibility · Demo edit
+// 5 columns: Customer · Refusals (90 d / 12 mo) · COD · Offer eligibility · test edits to refusal history
 function customersTable() {
   return `
     <thead><tr><th>Customer</th><th>Refusals 90 d / 12 mo</th><th>COD</th><th>Second-chance offer</th><th></th></tr></thead>

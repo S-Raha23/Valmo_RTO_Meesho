@@ -10,7 +10,7 @@
 
 <br>
 
-<a href="https://valmo-rto.netlify.app/#/driver"><img src="https://img.shields.io/badge/▶%20%20Try%20the%20live%20demo-valmo--rto.netlify.app-C81E78?style=for-the-badge" alt="Try the live demo"></a>
+<a href="https://valmo-rto.netlify.app/#/driver"><img src="https://img.shields.io/badge/▶%20%20Live%20demo-valmo--rto.netlify.app-C81E78?style=for-the-badge" alt="Live demo"></a>
 
 <br><br>
 
@@ -25,7 +25,7 @@
 [**Live demo**](https://valmo-rto.netlify.app/#/driver) ·
 [The problem](#-the-problem) ·
 [How it works](#-how-it-works) ·
-[Walkthrough](#-a-4-minute-walkthrough) ·
+[Scenarios](#-four-scenarios-end-to-end) ·
 [Business rules](#-business-rules) ·
 [Architecture](#-architecture) ·
 [Run locally](#-run-it-locally)
@@ -38,9 +38,9 @@
 
 > ### **[valmo-rto.netlify.app](https://valmo-rto.netlify.app/#/driver)**
 >
-> Opens on any laptop or phone. **No login, no install.**
-> Every visitor gets a private sandbox (stored in their own browser), so several people can try it at once without affecting each other.
-> Press **Reset demo** (top right) to start fresh at any time.
+> Runs on any laptop or phone. **No login, no install.**
+> Every visitor gets a private sandbox (stored in their own browser), so several people can use it at once without affecting each other.
+> The **Reset demo** button restores the sample data.
 
 | 🛵 Driver | 📱 Customer | 🏢 Hub Manager |
 |:---:|:---:|:---:|
@@ -167,7 +167,7 @@ sequenceDiagram
 
 ## 👀 Three perspectives, one story
 
-The prototype has three tabs that share the same live data, so what the rider does shows up for the customer and the hub manager straight away. After each step, a pink **next-step bar** tells you which tab continues the story.
+The prototype has three tabs that share the same live data, so what the rider does shows up for the customer and the hub manager straight away. After each action, a notification banner links to the view where the case continues.
 
 <table>
 <tr>
@@ -189,17 +189,17 @@ The prototype has three tabs that share the same live data, so what the rider do
 
 ---
 
-## 🎬 A 4-minute walkthrough
+## 🎬 Four scenarios, end to end
 
-Open the [live demo](https://valmo-rto.netlify.app/#/driver), press **Reset demo**, and follow these four stories. Each one uses a different order from the Driver tab.
+The sample data covers every path through the mechanism. Each scenario starts from a different order on the Driver tab.
 
-### A · Fake attempt gets flagged &nbsp;`ORD-1004`
+### A · A fake attempt is rejected &nbsp;`ORD-1004`
 
-On the **Driver** tab, open `ORD-1004` and pick *Customer not available*. The phone reports the rider was **640 m away** and **never called**, so the attempt is rejected and the hub manager is notified. Tap it again: the rider "goes back" and it passes.
+The rider reports *Customer not available*. Telemetry places the phone **640 m** from the address with **no call** to the customer, so the attempt is not accepted and the hub manager is notified. When the rider returns to the door and calls, the same report passes verification.
 
-### B · Nobody home, so it's rescheduled &nbsp;`ORD-1002`
+### B · Nobody home, so the delivery is rescheduled &nbsp;`ORD-1002`
 
-Pick *Customer not available* on `ORD-1002`. It's verified (34 m away, 32 s call), so the parcel is **held**, not returned. On the **Customer** tab Arjun confirms and picks a new slot. Back on the **Driver** tab it appears under *Re-deliveries*.
+The *Customer not available* report is verified (34 m from the address, 32 s call), so the parcel is **held** at the hub instead of returning. On WhatsApp, Arjun confirms the missed delivery and picks a new slot, and the parcel appears on the rider's *Re-deliveries* list.
 
 <table>
 <tr>
@@ -210,17 +210,17 @@ Pick *Customer not available* on `ORD-1002`. It's verified (34 m away, 32 s call
 </tr>
 </table>
 
-### C · Change of mind, recovered with an offer &nbsp;`ORD-1001`
+### C · A change of mind, recovered with an offer &nbsp;`ORD-1001`
 
-Pick *Customer refused* on `ORD-1001`. Priya confirms the refusal; it's her first, so she's offered **min(₹25, 10% × ₹349) = ₹25 off**. She pays ₹324 by UPI and picks a slot. The rider delivers it the next day.
+Priya confirms she refused the order. It is her first verified refusal, so she receives a one-time offer of **min(₹25, 10% × ₹349) = ₹25 off**. She pays ₹324 by UPI, picks a slot, and the parcel is delivered the next day.
 
-### D · Repeat refuser, no offer &nbsp;`ORD-1003`
+### D · A repeat refuser gets no offer &nbsp;`ORD-1003`
 
-Pick *Customer refused* on `ORD-1003`. Rahul already has two verified refusals this year, so there is **no offer**, **Cash on Delivery is paused**, and the parcel returns. The Hub Manager tab shows exactly why.
+Rahul already has two verified refusals this year. His refusal is recorded, **no offer** is made, **Cash on Delivery is paused**, and the parcel returns with the reason on record in the Hub Manager view.
 
 <table>
 <tr>
-<td align="center" width="25%"><img src="docs/images/04-customer-confirm-phone.png" alt="Customer asked to confirm"><br><sub>Customer is asked to confirm first</sub></td>
+<td align="center" width="25%"><img src="docs/images/04-customer-confirm-phone.png" alt="Customer asked to confirm"><br><sub>The customer confirms first</sub></td>
 <td align="center" width="25%"><img src="docs/images/06-second-chance-offer-phone.png" alt="Second-chance offer"><br><sub><b>C</b> · One-time offer, formula shown</sub></td>
 <td align="center" width="25%"><img src="docs/images/07-repeat-refuser-no-offer-phone.png" alt="Repeat refuser: no offer, COD paused"><br><sub><b>D</b> · No offer, COD paused</sub></td>
 <td align="center" width="25%"><img src="docs/images/12-whatsapp-hindi-phone.png" alt="WhatsApp flow in Hindi"><br><sub>Same flow in हिंदी</sub></td>
@@ -236,7 +236,7 @@ Pick *Customer refused* on `ORD-1003`. Rahul already has two verified refusals t
 | `ORD-1008` | Called from 1.8 km away, claimed "refused" | GPS |
 | `ORD-1009` | Rang for 5 seconds and hung up | Call too short (< 20 s) |
 
-**Extras:** `ORD-1005` is a ₹199 order, so the 10% rule gives ₹19.90 off instead of ₹25. `ORD-1006`'s customer already used an offer last month, so the 90-day cooldown blocks a second one. On the Customer tab, **Skip 72 h with no reply** shows the no-response return.
+**Edge cases in the sample data:** `ORD-1005` is a ₹199 order, so the 10% rule gives ₹19.90 off instead of ₹25. `ORD-1006`'s customer already used an offer last month, so the 90-day cooldown blocks a second one. A case with no customer reply returns after 72 hours with *No customer response* on record; a time-simulation control shows this without waiting.
 
 ### The hub manager's view
 
@@ -250,7 +250,7 @@ Pick *Customer refused* on `ORD-1003`. Rahul already has two verified refusals t
 
 <img src="docs/images/10-case-timeline.png" alt="Case timeline" width="100%">
 
-**Customer history** shows refusal counts in rolling 90-day and 12-month windows, offer eligibility and COD status. Demo buttons let you add or clear refusals to test the guardrails:
+**Customer history** shows refusal counts in rolling 90-day and 12-month windows, offer eligibility and COD status. Test controls add or clear refusals, so the offer and COD guardrails can be exercised:
 
 <img src="docs/images/11-customer-history.png" alt="Customer history" width="100%">
 
@@ -308,7 +308,7 @@ flowchart TB
 
 | Mode | Command | What runs | Used for |
 |---|---|---|---|
-| **Server** | `npm start` | Node HTTP server; each browser gets an in-memory sandbox | Local development, LAN demos on a phone |
+| **Server** | `npm start` | Node HTTP server; each browser gets an in-memory sandbox | Local development, testing on a phone over the local network |
 | **Static** | `npm run build:static` | The *unchanged* `server/` modules bundled into `dist/js/engine.bundle.js`; a small shim answers `fetch('/api/…')` in the browser and keeps the sandbox in `localStorage` | The public link on Netlify. No server, never sleeps |
 
 ### What's real and what's simulated
@@ -330,9 +330,9 @@ flowchart TB
 | `GET` | `/api/state` | Full snapshot for the visitor's sandbox (polled every 2 s) |
 | `POST` | `/api/attempts` | Rider reports a failed delivery `{ order_id, reason }`; GPS + call log are fetched and verified server-side |
 | `POST` | `/api/cases/:id/actions` | Customer / ops action: `confirm`, `deny`, `choose_slot`, `decline_reschedule`, `pay`, `decline_offer`, `deliver`, `expire` |
-| `POST` | `/api/customers/:id/refusals` | Demo: add a verified refusal to a customer |
-| `POST` | `/api/customers/:id/clear` | Demo: clear a customer's history |
-| `POST` | `/api/reset` | Restore all seed data for this visitor |
+| `POST` | `/api/customers/:id/refusals` | Test control: adds a verified refusal to a customer |
+| `POST` | `/api/customers/:id/clear` | Test control: clears a customer's refusal history |
+| `POST` | `/api/reset` | Restores all sample data for this visitor |
 
 ### Project structure
 
@@ -353,7 +353,7 @@ flowchart TB
 │   │   ├── eligibility.js  refusal history & offer eligibility
 │   │   ├── offer.js        discount calculation + UPI link
 │   │   ├── recovery.js     the recovery state machine
-│   │   └── customers.js    demo edits from Customer history
+│   │   └── customers.js    test edits to refusal history
 │   ├── lib/                geo, formatting, errors
 │   └── data/
 │       ├── seed.json       orders (with telemetry), customers, hubs
@@ -362,7 +362,7 @@ flowchart TB
 │   ├── index.html          navbar: Driver · Customer · Hub Manager
 │   ├── css/style.css
 │   └── js/
-│       ├── app.js          router + next-step bar
+│       ├── app.js          router + cross-view notifications
 │       ├── api.js, store.js, ui.js, i18n.js (EN / हिं)
 │       ├── components/     chat.js (WhatsApp), casePanel.js (case timeline)
 │       └── views/          driver.js, customer.js, hub.js
@@ -373,7 +373,7 @@ flowchart TB
 
 ## 🚀 Run it locally
 
-Requires **Node.js 18+**. There's nothing to install: zero dependencies.
+Requires **Node.js 18+** and nothing else: there are zero dependencies.
 
 ```bash
 git clone https://github.com/S-Raha23/Valmo_RTO_Meesho.git
@@ -381,19 +381,15 @@ cd Valmo_RTO_Meesho
 npm start
 ```
 
-Open **http://localhost:3000**. The terminal also prints a network address you can open on a phone on the same Wi-Fi.
+The app runs at **http://localhost:3000**, and the terminal also prints a network address for phones on the same Wi-Fi.
 
-### Build and deploy the static version
+### Static build
 
 ```bash
 npm run build:static        # writes dist/
 ```
 
-Then host `dist/` anywhere static:
-
-- **Netlify Drop:** drag `dist/` onto the site's *Deploys* page (that's how [valmo-rto.netlify.app](https://valmo-rto.netlify.app) is hosted), or
-- **Netlify + GitHub:** link this repo; `netlify.toml` already sets the build command and publish folder, or
-- **GitHub Pages / Cloudflare Pages:** asset paths are relative, so it works from a sub-path too.
+`dist/` is a self-contained static site that any static host can serve. [valmo-rto.netlify.app](https://valmo-rto.netlify.app) is hosted on Netlify; `netlify.toml` holds the build command and publish folder for repository-linked deploys. Asset paths are relative, so the build also works from a sub-path such as GitHub Pages.
 
 ---
 
@@ -427,6 +423,6 @@ Built for **Meesho DICE Challenge, Season 3** · Problem track: *Reducing RTO: g
 
 <br>
 
-<a href="https://valmo-rto.netlify.app/#/driver"><img src="https://img.shields.io/badge/▶%20%20Open%20the%20live%20demo-C81E78?style=for-the-badge" alt="Open the live demo"></a>
+<a href="https://valmo-rto.netlify.app/#/driver"><img src="https://img.shields.io/badge/▶%20%20Live%20demo-valmo--rto.netlify.app-C81E78?style=for-the-badge" alt="Live demo"></a>
 
 </div>

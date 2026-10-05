@@ -7,7 +7,7 @@ const listeners = new Set();
 export const store = {
   state: null,
   lang: 'en',
-  // "Next step" hint that links one perspective to the next, so the demo reads as a story.
+  // "Next step" notification that links one perspective to the next, so a case can be followed across views.
   next: null,
 };
 

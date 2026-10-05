@@ -34,14 +34,14 @@ nextEl.addEventListener('click', (e) => {
 });
 
 document.getElementById('reset-btn').addEventListener('click', async () => {
-  if (!confirm('Reset all demo data to the starting seed?')) return;
+  if (!confirm('Restore the sample data? Changes made in this browser will be cleared.')) return;
   try {
     await api.reset();
     store.next = null;
     await refresh(true);
     location.hash = '#/driver';
     route();
-    toast('Demo data reset', 'ok');
+    toast('Sample data restored', 'ok');
   } catch (err) {
     toast(err.message);
   }

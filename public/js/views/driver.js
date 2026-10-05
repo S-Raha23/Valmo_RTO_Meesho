@@ -5,23 +5,23 @@ import { esc, rs, fmtDist, fmtSlot, toast, REASON_LABELS } from '../ui.js';
 const RIDER_ID = 'R-01';
 const STEP_MS = 1000; // pace of the "fetching GPS / reading call log" animation
 
-// Presenter notes: which order tells which story.
-const STORIES = [
-  ['ORD-1002', 'Arjun', 'Customer not available', 'Customer is out and picks a new delivery slot.'],
-  ['ORD-1001', 'Priya', 'Customer refused', 'First refusal, so the customer gets a second-chance offer.'],
-  ['ORD-1003', 'Rahul', 'Customer refused', 'Repeat refuser: no offer, COD paused, return.'],
+// Sample orders in the seed data and the case each one exercises.
+const GENUINE = [
+  ['ORD-1002', 'Arjun', 'Customer not available', 'Genuine absence: verified, then the customer picks a new delivery slot.'],
+  ['ORD-1001', 'Priya', 'Customer refused', 'First refusal: eligible for a second-chance offer.'],
+  ['ORD-1003', 'Rahul', 'Customer refused', 'Repeat refuser: no offer, COD paused, parcel returns.'],
 ];
 
 // Fake attempts: each one games a different check, and each one gets flagged.
 const FAKES = [
-  ['ORD-1004', 'Kavya', 'Customer not available', 'Never went to the door, never called. Tap it again after the flag: the rider goes back and it passes.'],
-  ['ORD-1007', 'Sneha', 'Customer not available', 'At the door but never called the customer.'],
-  ['ORD-1008', 'Manoj', 'Customer refused', 'Called from 1.8 km away and claimed a refusal.'],
-  ['ORD-1009', 'Ritu', 'Customer not available', 'Rang for 5 seconds and hung up.'],
+  ['ORD-1004', 'Kavya', 'Customer not available', 'Never went to the door, never called. A repeat attempt from the door passes.'],
+  ['ORD-1007', 'Sneha', 'Customer not available', 'At the door, but no call to the customer.'],
+  ['ORD-1008', 'Manoj', 'Customer refused', 'Called from 1.8 km away while reporting a refusal.'],
+  ['ORD-1009', 'Ritu', 'Customer not available', 'Call lasted only 5 seconds.'],
 ];
 
-const storyList = (list) => `<ol class="stories">${list.map(([id, name, reason, text]) =>
-  `<li><b>${id}</b> · ${name}<div class="small">Pick <i>${reason}</i>. ${text}</div></li>`).join('')}</ol>`;
+const sampleList = (list) => `<ol class="stories">${list.map(([id, name, reason, text]) =>
+  `<li><b>${id}</b> · ${name}<div class="small"><i>${reason}</i> · ${text}</div></li>`).join('')}</ol>`;
 
 // Driver perspective: the Valmo Partner app on the rider's phone.
 export function mount(el) {
@@ -33,11 +33,11 @@ export function mount(el) {
       <aside class="card notes">
         <h3>Driver's view</h3>
         <p class="muted">The rider only says <b>why</b> a delivery failed. Location and call log are read from the phone automatically, so a failure can't be faked from the road.</p>
-        <div class="section-title">Genuine failures</div>
-        ${storyList(STORIES)}
-        <div class="section-title">Fake attempts (get flagged)</div>
-        ${storyList(FAKES)}
-        <p class="muted small">Also: ORD-1005 (₹199 order, so the discount is 10%) and ORD-1006 (offer used last month).</p>
+        <div class="section-title">Sample orders · genuine failures</div>
+        ${sampleList(GENUINE)}
+        <div class="section-title">Sample orders · fake attempts (flagged)</div>
+        ${sampleList(FAKES)}
+        <p class="muted small">ORD-1005 is a ₹199 order, so the 10% rule sets the discount. ORD-1006's customer used an offer last month, so the 90-day cooldown applies.</p>
       </aside>
     </div>`;
   const phone = el.querySelector('[data-phone]');
@@ -203,7 +203,7 @@ export function mount(el) {
     }
   }
 
-  // Point the presenter to the perspective where the story continues.
+  // Link to the perspective where this case continues.
   async function announce() {
     await refresh(true);
     const { attempt, case: rc } = s.result;

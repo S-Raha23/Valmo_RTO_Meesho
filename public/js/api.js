@@ -1,4 +1,4 @@
-// Each browser gets its own demo sandbox on the server. It is shared by all tabs
+// Each browser gets its own sandbox on the server. It is shared by all tabs
 // of this browser (so Driver, Customer and Hub stay in sync) but not with other visitors.
 const SESSION_ID = (() => {
   const fresh = () => Math.random().toString(36).slice(2) + Date.now().toString(36);

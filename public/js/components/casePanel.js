@@ -18,7 +18,7 @@ export function createCasePanel(root, resolveCase) {
 
   function update() {
     const rc = resolveCase();
-    root.innerHTML = `<div class="card panel">${rc ? body(rc) : '<p class="muted">Case not found. It may have been cleared by "Reset demo".</p>'}</div>`;
+    root.innerHTML = `<div class="card panel">${rc ? body(rc) : '<p class="muted">Case not found. It may have been cleared by a data reset.</p>'}</div>`;
   }
 
   function body(rc) {
@@ -47,7 +47,7 @@ export function createCasePanel(root, resolveCase) {
       </div>
       ${CLOSED.includes(rc.stage) ? outcome(rc, path) : `<div class="path">${path}</div>`}
       <dl class="facts">${facts.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
-      ${EXPIRABLE.includes(rc.stage) ? '<div class="ops"><span class="muted small">Demo shortcut</span><button class="btn small" data-act="expire">⏱ Skip 72 h with no reply</button></div>' : ''}
+      ${EXPIRABLE.includes(rc.stage) ? '<div class="ops"><span class="muted small">Time simulation</span><button class="btn small" data-act="expire">⏱ Simulate 72 h with no reply</button></div>' : ''}
       <div class="section-title">Timeline</div>
       <ol class="timeline">
         ${rc.events.map((e) => `

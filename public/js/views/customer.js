@@ -58,7 +58,7 @@ export function mount(el, customerId) {
 
     const rc = resolveCase();
     el.querySelector('[data-status]').innerHTML = rc && EXPIRABLE.includes(rc.stage)
-      ? `<div class="ops"><span class="muted small">Customer doesn't answer?</span><button class="btn small" data-act="expire">⏱ Skip 72 h with no reply</button></div>`
+      ? `<div class="ops"><span class="muted small">Time simulation</span><button class="btn small" data-act="expire">⏱ Simulate 72 h with no reply</button></div>`
       : '';
   }
 
@@ -66,7 +66,7 @@ export function mount(el, customerId) {
   return subscribe(render);
 }
 
-// Point the presenter to the perspective where the story continues.
+// Link to the perspective where this case continues.
 function announce(rc) {
   const name = firstName(rc.customer_id);
   const hubLink = { href: `#/hub/case/${rc.case_id}`, label: 'Open in Hub Manager' };
@@ -78,6 +78,6 @@ function announce(rc) {
     case 'escalated':
       return setNext({ text: `${name} says the rider's report is wrong. A hub supervisor takes over.`, ...hubLink });
     default:
-      return setNext(null); // the story continues on this same screen
+      return setNext(null); // this case continues on this same screen
   }
 }

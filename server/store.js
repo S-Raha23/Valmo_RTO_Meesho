@@ -5,7 +5,7 @@ const { evaluateEligibility } = require('./engine/eligibility');
 const { iso } = require('./lib/format');
 
 // In-memory data store with one private sandbox per visitor, so people using
-// a shared link don't see or reset each other's demo. `version` bumps on every
+// a shared link don't see or reset each other's data. `version` bumps on every
 // change so clients can poll cheaply.
 const MAX_SESSIONS = 300;
 const sessions = new Map(); // session id -> { db, version }, oldest first
